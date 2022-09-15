@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public GameUIManager uiManager;
-    public GridSystem gridSystem;
+    public GridSystem[] gridSystem;
     public ScriptableTowerObjects[] towers;
     private GameObject tower;
     [HideInInspector]public GridCell selectedGridCell;

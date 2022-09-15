@@ -4,7 +4,7 @@ public class SelectCommand : ICommand
 {
     private GameObject selectedGameObject;
     private GridCell selectedGridCell;
-    private GridSystem gridSystem;
+    private GridSystem[] gridSystem;
 
     public SelectCommand(GameObject gameObject)
     {
@@ -33,11 +33,14 @@ public class SelectCommand : ICommand
     {
         gridSystem = GameManager.Instance.gridSystem;
 
-        for(int i = 0; i < gridSystem.gridCellList.Count; i++)
+        for(int j = 0; j < gridSystem.Length; j++)
         {
-            if(gridSystem.gridCellList[i].name == selectedGameObject.transform.name)
+            for(int i = 0; i < gridSystem[j].gridCellList.Count; i++)
             {
-                selectedGridCell = gridSystem.gridCellList[i];
+                if(gridSystem[j].gridCellList[i].name == selectedGameObject.transform.name)
+                {
+                    selectedGridCell = gridSystem[j].gridCellList[i];
+                }
             }
         }
     }

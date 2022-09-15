@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MouseController : MonoBehaviour
 {
-    [SerializeField] private GridSystem gridSystem;
-
     private ICommand command;
 
     void Update()

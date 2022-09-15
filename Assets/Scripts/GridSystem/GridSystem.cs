@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GridSystem : MonoBehaviour
 {
+    [SerializeField]private int gridSystemId = 0;
     [SerializeField]private int gridSizeX = 5;
     [SerializeField]private int gridSizeY = 5;
     [SerializeField]private GameObject originalGridObject;
@@ -20,7 +21,7 @@ public class GridSystem : MonoBehaviour
                 GridCell gridCell = new GridCell();
                 gridCell.x = getGridObjectPosition(x, y).x;
                 gridCell.y = getGridObjectPosition(x, y).y;
-                gridCell.name = "Grid-" + x + "x" + y;
+                gridCell.name = "Grid-" + x + "x" + y + "-" +gridSystemId;
 
                 gridCellList.Add(gridCell);
 
