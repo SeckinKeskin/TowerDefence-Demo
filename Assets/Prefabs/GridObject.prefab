@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 2586050462804154375}
   - component: {fileID: 2586050462804154374}
   - component: {fileID: 2586050462804154393}
-  m_Layer: 0
+  - component: {fileID: 2355518040476178529}
+  m_Layer: 6
   m_Name: GridObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,3 +110,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!208 &2355518040476178529
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2586050462804154392}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.080000006, y: 0.080000006, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
