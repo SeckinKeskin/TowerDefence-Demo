@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    public GameUIManager uiManager;
+    [SerializeField]private EnemyHandler enemyHandler;
+    [SerializeField]private InGameUIManager uiManager;
     public GridSystem[] gridSystem;
     public ScriptableTowerObjects[] towers;
-    private GameObject tower;
     [HideInInspector]public GridCell selectedGridCell;
     public int currentTowerId = 0;
     public int nextTowerId = 0;
@@ -23,13 +23,19 @@ public class GameManager : Singleton<GameManager>
     public void constractTower()
     {
         Vector2 towerPosition = new Vector2(selectedGridCell.x, selectedGridCell.y);
-        tower = Instantiate(towers[currentTowerId].tower, towerPosition, Quaternion.identity);
+        GameObject tower = Instantiate(towers[currentTowerId].tower, towerPosition, Quaternion.identity);
         selectedGridCell.usable = false;
         
         currentTowerId = getCurrentTowerId();
         nextTowerId = getNextTowerId();
         
         uiManager.changeTowerIcons(currentTowerId, nextTowerId);
+    }
+
+    public void spawnEnemies()
+    {
+        uiManager.nextWaveTime = 45;
+        enemyHandler.enemyManufacturer(0);
     }
 
     public int getCurrentTowerId()
