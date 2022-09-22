@@ -7,10 +7,12 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]public TowerHandler towerHandler;
     [SerializeField]private EnemyHandler enemyHandler;
     [SerializeField]private InGameUIManager uiManager;
+    [SerializeField]private int nextWaveTime = 10;
     [SerializeField]public GridSystem[] gridSystem;
     [HideInInspector]public GridCell selectedGridCell;
     [HideInInspector]public int currentTowerId = 0;
     [HideInInspector]public int nextTowerId = 0;
+    
 
     public void Start()
     {
@@ -34,7 +36,7 @@ public class GameManager : Singleton<GameManager>
 
     public void spawnEnemies()
     {
-        uiManager.nextWaveTime = 45;
+        uiManager.nextWaveTime = nextWaveTime;
         enemyHandler.enemyManufacturer(0);
     }
 }
