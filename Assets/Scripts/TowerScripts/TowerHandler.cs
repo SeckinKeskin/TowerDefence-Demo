@@ -5,9 +5,8 @@ using UnityEngine;
 public class TowerHandler : MonoBehaviour
 {
     [SerializeField]public ScriptableTowerObjects[] towerObjects;
-    private ScriptableTowerObjects scriptableTowerObject;
-    private Tower tower;
     [HideInInspector]public Vector2 buildPosition;
+    private Tower tower;
 
     public void towerManufacturer(int id)
     {

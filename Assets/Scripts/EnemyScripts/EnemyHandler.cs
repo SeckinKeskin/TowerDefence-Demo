@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyHandler : MonoBehaviour
 {
-    [SerializeField]private ScriptableEnemyObjects[] enemyObjects;
+    [SerializeField]public ScriptableEnemyObjects[] enemyObjects;
     [SerializeField]private Transform spawnPoint;
     [SerializeField]private Transform destinationPoint;
     private Enemy enemy;
