@@ -35,7 +35,7 @@ public class InGameUIManager : MonoBehaviour
 
     public void changeTowerIcons(int currentId, int nextId)
     {
-        currentTower.GetComponent<Image>().sprite = GameManager.Instance.towers[currentId].towerIcon;
-        nextTower.GetComponent<Image>().sprite = GameManager.Instance.towers[nextId].towerIcon;
+        currentTower.GetComponent<Image>().sprite = GameManager.Instance.towerHandler.towerObjects[currentId].towerIcon;
+        nextTower.GetComponent<Image>().sprite = GameManager.Instance.towerHandler.towerObjects[nextId].towerIcon;
     }
 }

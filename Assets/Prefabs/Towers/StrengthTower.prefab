@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4641998558600442626}
   - component: {fileID: 4641998558600442627}
   - component: {fileID: 2156627344636664672}
+  - component: {fileID: -6407587404740062124}
   m_Layer: 6
   m_Name: StrengthTower
   m_TagString: Untagged
@@ -112,3 +113,15 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.3
+--- !u!114 &-6407587404740062124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4641998558600442652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fe1eff0f772f774993064c19a7722ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

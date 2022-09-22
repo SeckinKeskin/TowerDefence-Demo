@@ -1,27 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TowerHandler : MonoBehaviour
 {
-    private float baseDamage = 100;
-    public float damage = 0.0f;
-    public float attackSpeed = 0.0f;
+    [SerializeField]public ScriptableTowerObjects[] towerObjects;
+    private ScriptableTowerObjects scriptableTowerObject;
+    private Tower tower;
+    [HideInInspector]public Vector2 buildPosition;
 
-    public TowerHandler()
+    public void towerManufacturer(int id)
     {
-        setTowerAttackSpeed();
-        setTowerDamage();
+        GameObject towerObject = Instantiate(towerObjects[id].tower, buildPosition, Quaternion.identity);
+        tower = GetComponent<Tower>();
     }
 
-    private void setTowerAttackSpeed()
+    public int getCurrentTowerId()
     {
-
+        if(GameManager.Instance.nextTowerId > -1)
+            return GameManager.Instance.nextTowerId;
+        else
+            return Random.Range(0, towerObjects.Length);
     }
-    
-    private void setTowerDamage()
+
+    public int getNextTowerId()
     {
-        
+        return Random.Range(0, towerObjects.Length);
     }
 }

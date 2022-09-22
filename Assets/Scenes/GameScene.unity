@@ -315,12 +315,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 302563360}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.5, y: 4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_Father: {fileID: 1703249837}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &618585372
 GameObject:
@@ -468,12 +468,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847691219}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.5, y: -4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 1703249837}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -587,14 +587,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6abe54002e7e5384993791bddb896c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerHandler: {fileID: 1813066722}
   enemyHandler: {fileID: 71591731}
   uiManager: {fileID: 1812103535}
   gridSystem:
   - {fileID: 1850553634}
-  towers:
-  - {fileID: 11400000, guid: 81019b556a4bb5d428765a4847a45584, type: 2}
-  - {fileID: 11400000, guid: ec3b06f49fc8bd0459f868db825ad35b, type: 2}
-  - {fileID: 11400000, guid: 3a04e3d7737c97e44bf6dd68b0d596ab, type: 2}
   currentTowerId: 0
   nextTowerId: 0
 --- !u!4 &1395863565
@@ -609,7 +606,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1647747810
 GameObject:
@@ -715,8 +712,10 @@ Transform:
   m_Children:
   - {fileID: 1850553635}
   - {fileID: 618585373}
+  - {fileID: 847691220}
+  - {fileID: 302563361}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1811242618
 GameObject:
@@ -923,6 +922,54 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5cadde2642ab9744490781d878ac977f, type: 3}
   nextWaveTimerText: {fileID: 245559659}
   nextWaveTime: 5
+--- !u!1 &1813066721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1813066723}
+  - component: {fileID: 1813066722}
+  m_Layer: 0
+  m_Name: TowerHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1813066722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813066721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1560bee2f9383740bb7e530d2fab5ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerObjects:
+  - {fileID: 11400000, guid: 81019b556a4bb5d428765a4847a45584, type: 2}
+  - {fileID: 11400000, guid: ec3b06f49fc8bd0459f868db825ad35b, type: 2}
+  - {fileID: 11400000, guid: 3a04e3d7737c97e44bf6dd68b0d596ab, type: 2}
+  buildPosition: {fileID: 0}
+--- !u!4 &1813066723
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813066721}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.16573021, y: 0.07454175, z: 0.000985695}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1850553633
 GameObject:
   m_ObjectHideFlags: 0
@@ -1208,7 +1255,7 @@ Transform:
   m_LocalScale: {x: 0.55, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &2129169123
 MonoBehaviour:
@@ -1236,7 +1283,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.05333333
+  m_VoxelSize: 0.060000002
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: d5c2e93e54ff80f4b97640914d5cc411, type: 2}
   m_BuildHeightMesh: 0

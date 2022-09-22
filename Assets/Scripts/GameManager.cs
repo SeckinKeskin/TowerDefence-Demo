@@ -4,30 +4,30 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    [SerializeField]public TowerHandler towerHandler;
     [SerializeField]private EnemyHandler enemyHandler;
     [SerializeField]private InGameUIManager uiManager;
-    public GridSystem[] gridSystem;
-    public ScriptableTowerObjects[] towers;
+    [SerializeField]public GridSystem[] gridSystem;
     [HideInInspector]public GridCell selectedGridCell;
-    public int currentTowerId = 0;
-    public int nextTowerId = 0;
+    [HideInInspector]public int currentTowerId = 0;
+    [HideInInspector]public int nextTowerId = 0;
 
     public void Start()
     {
-        currentTowerId = getCurrentTowerId();
-        nextTowerId = getNextTowerId();
+        currentTowerId = towerHandler.getCurrentTowerId();
+        nextTowerId = towerHandler.getNextTowerId();
 
         uiManager.changeTowerIcons(currentTowerId, nextTowerId);
     }
 
     public void constractTower()
     {
-        Vector2 towerPosition = new Vector2(selectedGridCell.x, selectedGridCell.y);
-        GameObject tower = Instantiate(towers[currentTowerId].tower, towerPosition, Quaternion.identity);
+        towerHandler.buildPosition = new Vector2(selectedGridCell.x, selectedGridCell.y);
+        towerHandler.towerManufacturer(currentTowerId);
         selectedGridCell.usable = false;
         
-        currentTowerId = getCurrentTowerId();
-        nextTowerId = getNextTowerId();
+        currentTowerId = towerHandler.getCurrentTowerId();
+        nextTowerId = towerHandler.getNextTowerId();
         
         uiManager.changeTowerIcons(currentTowerId, nextTowerId);
     }
@@ -36,18 +36,5 @@ public class GameManager : Singleton<GameManager>
     {
         uiManager.nextWaveTime = 45;
         enemyHandler.enemyManufacturer(0);
-    }
-
-    public int getCurrentTowerId()
-    {
-        if(nextTowerId > -1)
-            return nextTowerId;
-        else
-            return Random.Range(0, towers.Length);
-    }
-
-    public int getNextTowerId()
-    {
-        return Random.Range(0, towers.Length);
     }
 }
