@@ -1,16 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AI;
-
-public class Enemy : MonoBehaviour
+public class Enemy : Attributes, IEnemy
 {
-    private NavMeshAgent navMeshAgent;
-    [HideInInspector]public Transform destionationPoint;
-
-    void Start()
+    public float moveSpeed;
+    
+    public void moveSpeedCalculate()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        navMeshAgent.SetDestination(destionationPoint.position);
+        moveSpeed = agility * 0.25f;
     }
 }
