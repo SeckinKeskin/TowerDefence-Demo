@@ -6,12 +6,21 @@ public class TowerHandler : MonoBehaviour
 {
     [SerializeField]public ScriptableTowerObjects[] towerObjects;
     [HideInInspector]public Vector2 buildPosition;
-    private Tower tower;
+    private TowerController towerController;
 
     public void towerManufacturer(int id)
     {
         GameObject towerObject = Instantiate(towerObjects[id].tower, buildPosition, Quaternion.identity);
-        tower = GetComponent<Tower>();
+        towerController = towerObject.GetComponent<TowerController>();
+
+        setTowerAttributes(towerObjects[id]);
+    }
+
+    private void setTowerAttributes(ScriptableTowerObjects towerObject)
+    {
+        towerController.tower.strength = towerObject.strength;
+        towerController.tower.agility = towerObject.agility;
+        towerController.tower.intelligence = towerObject.intelligence;
     }
 
     public int getCurrentTowerId()

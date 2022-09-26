@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 305178696813979870}
   - component: {fileID: -1730935682320191550}
   - component: {fileID: 9099067818182072404}
+  - component: {fileID: -9069597964745347896}
   m_Layer: 6
   m_Name: IntelligenceTower
   m_TagString: Untagged
@@ -125,3 +126,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe1eff0f772f774993064c19a7722ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggeredTag: Enemy
+--- !u!135 &-9069597964745347896
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305178696813979869}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

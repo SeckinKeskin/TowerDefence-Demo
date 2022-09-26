@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c661c1594af09964bb25eab43346c7aa, type: 3}
   m_Name: AgilityTower
   m_EditorClassIdentifier: 
-  agility: 5
-  strength: 1
-  intelligence: 1
+  agility: 4
+  strength: 3
+  intelligence: 3
   attackRange: 3
   tower: {fileID: 365343986692816487, guid: 95ec06f7106c9c347bdc52b8a872cfe0, type: 3}
   towerIcon: {fileID: 21300000, guid: 1c5514663b54cfb429e1ea189d882e67, type: 3}
