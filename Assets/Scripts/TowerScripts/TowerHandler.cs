@@ -18,9 +18,9 @@ public class TowerHandler : MonoBehaviour
 
     private void setTowerAttributes(ScriptableTowerObjects towerObject)
     {
-        towerController.tower.strength = towerObject.strength;
-        towerController.tower.agility = towerObject.agility;
-        towerController.tower.intelligence = towerObject.intelligence;
+        towerController.tower.attributes.strength = towerObject.strength;
+        towerController.tower.attributes.agility = towerObject.agility;
+        towerController.tower.attributes.intelligence = towerObject.intelligence;
     }
 
     public int getCurrentTowerId()

@@ -1,21 +1,22 @@
-public class Tower : Attributes, ITower
+public class Tower : ITower
 {
+    public Attributes attributes = new Attributes();
     public float attackRange;
     public float attackSpeed;
     public float damage;
 
     public void attackRangeCalculate()
     {
-        attackRange = intelligence * 0.25f;
+        attackRange = attributes.intelligence * 0.25f;
     }
 
     public void attackSpeedCalculate()
     {
-        attackSpeed = agility;
+        attackSpeed = attributes.agility;
     }
 
     public void damageCalculate()
     {
-        damage = agility * strength;
+        damage = attributes.agility * attributes.strength;
     }
 }
