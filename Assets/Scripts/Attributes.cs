@@ -1,24 +1,13 @@
-public class Attributes 
+public struct Attributes
 {
-    private int _strength = 1;
-    private int _agility = 1;
-    private int _intelligence = 1;
+    public int strength;
+    public int agility;
+    public int intelligence;
 
-    public int strength
+    public Attributes(int _strength, int _agility, int _intelligence)
     {
-        get => _strength;
-        set => _strength = value;
-    }
-
-    public int agility
-    {
-        get => _agility;
-        set => _agility = value;
-    }
-
-    public int intelligence
-    {
-        get => _intelligence;
-        set => _intelligence = value;
+        strength = _strength;
+        agility = _agility;
+        intelligence = _intelligence;
     }
 }

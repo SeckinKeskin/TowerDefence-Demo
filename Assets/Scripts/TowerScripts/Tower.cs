@@ -1,9 +1,14 @@
 public class Tower : ITower
 {
-    public Attributes attributes = new Attributes();
+    public Attributes attributes;
     public float attackRange;
     public float attackSpeed;
     public float damage;
+
+    public Tower(Attributes _attributes)
+    {
+        attributes = _attributes;
+    }
 
     public void attackRangeCalculate()
     {

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerController : MonoBehaviour 
+public class TowerManager : Singleton<TowerManager> 
 {
-    [HideInInspector]public Tower tower = new Tower();
+    [HideInInspector] public Tower tower;
     [SerializeField]private string triggeredTag;
     private SphereCollider rangeDetectionCollider;
 
