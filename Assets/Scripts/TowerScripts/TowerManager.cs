@@ -1,33 +1,80 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerManager : Singleton<TowerManager> 
 {
-    [HideInInspector] public Tower tower;
-    [SerializeField]private string triggeredTag;
-    private SphereCollider rangeDetectionCollider;
+    [SerializeField] private ScriptableTowerObject[] scriptableTowerArray;
+    [SerializeField] private ScriptableTowerObject dummyTowerData;
 
-    void Start()
+    #region Each Tower Properties Get By Type
+    public Sprite GetIconByType(TowerTypes type)
     {
-        tower.attackRangeCalculate();
-        tower.attackSpeedCalculate();
-        tower.damageCalculate();
-
-        setTriggerRange();
-    }
-
-    void setTriggerRange()
-    {
-        rangeDetectionCollider = GetComponent<SphereCollider>();
-        rangeDetectionCollider.radius = tower.attackRange;
-    }
-
-    void OnTriggerEnter(Collider collider)
-    {
-        if(collider.tag == triggeredTag)
+        foreach (ScriptableTowerObject scriptableTower in scriptableTowerArray)
         {
-            Debug.Log("Attack!");
+            if(scriptableTower.type == type)
+                return scriptableTower.icon;
         }
+
+        return dummyTowerData.icon;
     }
+
+    public Vector2 GetSizeByType(TowerTypes type)
+    {
+        foreach (ScriptableTowerObject scriptableTower in scriptableTowerArray)
+        {
+            if(scriptableTower.type == type)
+                return scriptableTower.gridSize;
+        }
+
+        return Vector2.one;
+    }
+
+    public GameObject GetPrefabByType(TowerTypes type)
+    {
+        foreach (ScriptableTowerObject scriptableTower in scriptableTowerArray)
+        {
+            if(scriptableTower.type == type)
+                return scriptableTower.prefab;
+        }
+
+        return dummyTowerData.prefab;
+    }
+
+    public int GetCostByType(TowerTypes type)
+    {
+        foreach (ScriptableTowerObject scriptableTower in scriptableTowerArray)
+        {
+            if(scriptableTower.type == type)
+                return scriptableTower.cost;
+        }
+
+        return 0;
+    }
+    #endregion
+    
+    #region  Each Tower Part Get Lists
+    public List<Sprite> GetTowerIconList()
+    {
+        List<Sprite> iconList = new List<Sprite>();
+
+        foreach (ScriptableTowerObject scriptableTower in scriptableTowerArray)
+        {
+            iconList.Add(scriptableTower.icon);
+        }
+
+        return iconList;
+    }
+
+    public List<TowerTypes> GetTowerTypeList()
+    {
+        List<TowerTypes> typeList = new List<TowerTypes>();
+
+        foreach(ScriptableTowerObject scriptableTower in scriptableTowerArray)
+        {
+            typeList.Add(scriptableTower.type);
+        }
+
+        return typeList;
+    }
+    #endregion
 }

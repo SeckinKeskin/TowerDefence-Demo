@@ -3,50 +3,25 @@ using UnityEngine;
 public class SelectCommand : ICommand
 {
     private GameObject selectedGameObject;
-    private GridCell selectedGridCell;
-    private GridSystem[] gridSystem;
-
+    private GridCellBehaviour cellBehaviour;
+    private TowerFactory towerFactory;
+    
     public SelectCommand(GameObject gameObject)
     {
         selectedGameObject = gameObject;
+        cellBehaviour = selectedGameObject.GetComponent<GridCellBehaviour>();
     }
 
-    public void execute()
+    public void Execute()
     {
-        setSelectedGridCell();
-        setSelectedObjects();
+        towerFactory = GameObject.FindObjectOfType<TowerFactory>();
 
-        if(getGridUsable())
+        if(cellBehaviour.isAvailable)
         {
-            GameManager.Instance.constractTower();
+            GameManager.Instance.Generator(towerFactory, selectedGameObject.transform.position);
+            GameManager.Instance.SetTowerType();
+            
+            cellBehaviour.isAvailable = false;
         }
-
-        Debug.Log("Select Command");
-    }
-
-    private bool getGridUsable()
-    {
-        return selectedGridCell.usable;
-    }
-
-    private void setSelectedGridCell()
-    {
-        gridSystem = GameManager.Instance.gridSystem;
-
-        for(int j = 0; j < gridSystem.Length; j++)
-        {
-            for(int i = 0; i < gridSystem[j].gridCellList.Count; i++)
-            {
-                if(gridSystem[j].gridCellList[i].name == selectedGameObject.transform.name)
-                {
-                    selectedGridCell = gridSystem[j].gridCellList[i];
-                }
-            }
-        }
-    }
-
-    private void setSelectedObjects()
-    {
-        GameManager.Instance.selectedGridCell = selectedGridCell;
     }
 }

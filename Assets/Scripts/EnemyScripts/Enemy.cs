@@ -1,10 +1,9 @@
-public class Enemy : IEnemy
-{
-    public float moveSpeed;
-    public Attributes attributes = new Attributes();
+using UnityEngine;
 
-    public void moveSpeedCalculate()
+public class Enemy : MonoBehaviour, IProducible
+{   
+    public void Initialize()
     {
-        moveSpeed = attributes.agility * 0.25f;
+        
     }
 }

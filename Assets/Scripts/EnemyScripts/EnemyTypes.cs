@@ -1,7 +1,7 @@
 public enum EnemyTypes
 {
     Default,
-    Strength,
-    Agility,
-    Intelligence
+    TypeA,
+    TypeB,
+    TypeC
 }

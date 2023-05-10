@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MouseController : MonoBehaviour
@@ -26,7 +24,7 @@ public class MouseController : MonoBehaviour
             command = new DeselectCommand();
         }
 
-        command.execute();
+        command.Execute();
     }
 
     private Collider2D getRaycastHitCollider()

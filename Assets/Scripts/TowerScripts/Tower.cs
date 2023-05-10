@@ -1,27 +1,22 @@
-public class Tower : ITower
+using UnityEngine;
+
+public class Tower : MonoBehaviour, IProducible
 {
-    public Attributes attributes;
-    public float attackRange;
-    public float attackSpeed;
-    public float damage;
+    protected Sprite icon;
+    protected Vector2 size;
+    protected GameObject prefab;
+    protected int cost;
+    protected int level = 0;
 
-    public Tower(Attributes _attributes)
+    public virtual void Initialize()
     {
-        attributes = _attributes;
+        transform.name = "Tower";
+
+        Debug.Log(transform.name);
     }
 
-    public void attackRangeCalculate()
+    public virtual void LevelUp()
     {
-        attackRange = attributes.intelligence * 0.25f;
-    }
-
-    public void attackSpeedCalculate()
-    {
-        attackSpeed = attributes.agility;
-    }
-
-    public void damageCalculate()
-    {
-        damage = attributes.agility * attributes.strength;
+        level++;
     }
 }

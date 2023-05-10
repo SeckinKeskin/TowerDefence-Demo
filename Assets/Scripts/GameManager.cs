@@ -4,62 +4,49 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    [HideInInspector]public GridCell selectedGridCell;
-    [HideInInspector]public int currentTowerId = 0;
-    [HideInInspector]public int nextTowerId = 0;
-    [HideInInspector]public ScriptableTowerObjects currentTower;
-    [HideInInspector]public ScriptableTowerObjects nextTower;
-    [HideInInspector]public ScriptableEnemyObjects nextWave;
-    [SerializeField]public GridSystem[] gridSystem;
-    [SerializeField]public TowerHandler towerHandler;
-    [SerializeField]private EnemyHandler enemyHandler;
-    [SerializeField]private InGameUIManager uiManager;
-    [SerializeField]private int nextWaveTime = 10;
+    [SerializeField] public TowerTypePresenter towerTypePresenter;
+    [SerializeField] private IProducible product;
+    private StateMachine stateMachine = new StateMachine();
 
-    public void Start()
+    void Start()
     {
-        setTowerIds();
+        SetTowerType();
+
+        stateMachine.Initialize(new GameState());
     }
 
-    public void constractTower()
+    public void Generator(IFactory factory, Vector2 generatePosition)
     {
-        selectedGridCell.usable = false;
-
-        towerHandler.buildPosition = new Vector2(selectedGridCell.x, selectedGridCell.y);
-        towerHandler.towerManufacturer(currentTowerId);
+        product = factory.GetProduct();
+        product.Initialize();
         
-        setTowerIds();
-    }
-    
-    public void spawnEnemies()
-    {
-        uiManager.nextWaveTime = nextWaveTime;
-        enemyHandler.enemyManufacturer(0);
+        factory.Generate(generatePosition);
     }
 
-    private void setTowerIds()
+    public void SetTowerType()
     {
-        currentTowerId = towerHandler.getCurrentTowerId();
-        nextTowerId = towerHandler.getNextTowerId();
-        
-        setTowers();
-        setEnemy();
-        setUiIcons();
+        towerTypePresenter.SetTypes();
+    }
+}
+
+public class GameState : State
+{
+    private GameManager gameManager;
+
+    public override void Initialize()
+    {
+        gameManager = GameManager.Instance;
+
+        Debug.Log("Turn Begin!");
     }
 
-    private void setUiIcons()
+    public override void Active()
     {
-        uiManager.changeTowerIcons(currentTowerId, nextTowerId);
+        Debug.Log("Enemy Spawn & Tower Attacks!");
     }
 
-    private void setTowers()
+    public override void Close()
     {
-        currentTower = towerHandler.towerObjects[currentTowerId];
-        nextTower = towerHandler.towerObjects[nextTowerId];
-    }
-
-    private void setEnemy()
-    {
-        nextWave = enemyHandler.enemyObjects[0];
+        Debug.Log("Turn End!");
     }
 }

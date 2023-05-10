@@ -5,13 +5,13 @@ public class Grid
     private int columnLength = 0;
     private int rowLength = 0;
 
-    public Grid(int _columnLenght, int _rowLenght)
+    public Grid(int columnLenght, int rowLenght)
     {
-        columnLength = _columnLenght;
-        rowLength = _rowLenght;
+        this.columnLength = columnLenght;
+        this.rowLength = rowLenght;
     }
 
-    public List<Cell> getGridList()
+    public List<Cell> GetGridList()
     {
         Cell currentCell = new Cell(0, 0);
         List<Cell> cellList = new List<Cell>();

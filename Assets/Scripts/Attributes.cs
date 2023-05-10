@@ -4,10 +4,10 @@ public struct Attributes
     public int agility;
     public int intelligence;
 
-    public Attributes(int _strength, int _agility, int _intelligence)
+    public Attributes(int strength, int agility, int intelligence)
     {
-        strength = _strength;
-        agility = _agility;
-        intelligence = _intelligence;
+        this.strength = strength;
+        this.agility = agility;
+        this.intelligence = intelligence;
     }
 }
