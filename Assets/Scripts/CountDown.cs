@@ -1,32 +1,23 @@
 using System.Collections;
 using UnityEngine;
 
-public class CountDown : MonoBehaviour
+public class CountDown
 {
-    public float timer = 0.0f;
+    private float _timer = 0.0f;
 
-    private void Start()
+    public float timer{ get => _timer; }
+
+    public CountDown(float timer)
     {
-
-    }
-
-    private void Update()
-    {
-        if(timer  > 0)
-        {
-            timer -= Time.deltaTime;
-
-            Debug.Log(Mathf.Floor(timer));
-        }
+        _timer = timer;
     }
 
     public IEnumerator StartCountDown()
     {
-        while(timer > 0)
+        while(_timer > 0)
         {
-            Debug.Log("CD: " + timer.ToString());
             yield return new WaitForSeconds(1.0f);
-            timer -= 1.0f;
+            _timer -= 1.0f;
         }
     }
 }

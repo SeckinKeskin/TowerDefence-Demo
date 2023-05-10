@@ -7,6 +7,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] public TowerTypePresenter towerTypePresenter;
     [SerializeField] private IProducible product;
     private StateMachine stateMachine = new StateMachine();
+    private CountDown countDown;
 
     void Start()
     {
@@ -26,5 +27,11 @@ public class GameManager : Singleton<GameManager>
     public void SetTowerType()
     {
         towerTypePresenter.SetTypes();
+    }
+
+    public void SetCountDown(float time)
+    {
+        countDown = new CountDown(time);
+        StartCoroutine(countDown.StartCountDown());
     }
 }

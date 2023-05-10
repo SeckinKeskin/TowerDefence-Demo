@@ -8,20 +8,16 @@ public class TowerType : MonoBehaviour
     public TowerTypes currentType;
     public TowerTypes nextType;
     private List<TowerTypes> towerTypes;
-    
-    [SerializeField] private CountDown cd;
 
     private void Start()
     {
         SetNextType();
-        cd.timer = 5;
     }
 
     public void SetTypes()
     {
         SetCurrentType();
         SetNextType();
-        cd.timer = 5;
     }
 
     public void UpdateType()
