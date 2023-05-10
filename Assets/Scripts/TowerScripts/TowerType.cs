@@ -20,7 +20,7 @@ public class TowerType : MonoBehaviour
         SetNextType();
     }
 
-    public void UpdateType()
+    private void UpdateType()
     {
         TypeChanged?.Invoke();
     }
