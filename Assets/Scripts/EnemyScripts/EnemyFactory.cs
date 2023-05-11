@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class EnemyFactory : MonoBehaviour, IFactory
 {
+    [SerializeField] private EnemyType enemyType;
     private GameObject currentPrefab;
     private EnemyTypes currentType;
 
     private void Start()
     {
-        currentType = EnemyTypes.Default;
+        currentType = enemyType.nextType;
     }
 
     public IProducible GetProduct()

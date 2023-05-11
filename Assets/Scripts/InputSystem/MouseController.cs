@@ -24,7 +24,7 @@ public class MouseController : MonoBehaviour
             command = new DeselectCommand();
         }
 
-        command.Execute();
+        command?.Execute();
     }
 
     private Collider2D getRaycastHitCollider()

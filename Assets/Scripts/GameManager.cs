@@ -5,11 +5,14 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] public TowerTypePresenter towerTypePresenter;
-    [SerializeField] private IProducible product;
+    [SerializeField] private EnemySpawnTimePresenter enemySpawnTimePresenter;
+    private IProducible product;
     private StateMachine stateMachine = new StateMachine();
     void Start()
     {
         SetTowerType();
+
+        enemySpawnTimePresenter.ResetTimer();
 
         stateMachine.Initialize(new GameState());
     }

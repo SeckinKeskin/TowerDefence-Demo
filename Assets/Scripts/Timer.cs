@@ -5,6 +5,7 @@ using UnityEngine;
 public class Timer
 {
     public event Action TimerEnded;
+    public event Action TimeChanged;
     private float _time = 0.0f;
     private float _target = 0.0f;
     private float _speed = 1.0f;
@@ -35,6 +36,8 @@ public class Timer
         {
             yield return new WaitForSeconds(timeLapse);
             _time += timeLapse;
+            
+            TimeChangeHandler();
         }
 
         TimerEndHandler();
@@ -43,5 +46,10 @@ public class Timer
     private void TimerEndHandler()
     {
         TimerEnded?.Invoke();
+    }
+    
+    private void TimeChangeHandler()
+    {
+        TimeChanged?.Invoke();
     }
 }
