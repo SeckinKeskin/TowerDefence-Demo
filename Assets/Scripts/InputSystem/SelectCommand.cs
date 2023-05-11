@@ -20,7 +20,7 @@ public class SelectCommand : ICommand
         {
             GameManager.Instance.Generator(towerFactory, selectedGameObject.transform.position);
             GameManager.Instance.SetTowerType();
-
+            
             cellBehaviour.isAvailable = false;
         }
     }
