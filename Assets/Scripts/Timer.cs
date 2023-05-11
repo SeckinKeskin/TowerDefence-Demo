@@ -40,7 +40,7 @@ public class Timer
         TimerEndHandler();
     }
 
-    public void TimerEndHandler()
+    private void TimerEndHandler()
     {
         TimerEnded?.Invoke();
     }
