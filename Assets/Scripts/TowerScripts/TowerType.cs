@@ -9,7 +9,7 @@ public class TowerType : MonoBehaviour
     public TowerTypes nextType;
     private List<TowerTypes> towerTypes;
 
-    private void Start()
+    private void Awake()
     {
         SetNextType();
     }
