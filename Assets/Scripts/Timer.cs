@@ -6,12 +6,12 @@ public class Timer
 {
     public event Action TimerEnded;
     public event Action TimeChanged;
-    public float time{ get; private set; }
-    public float target { get; private set; }
-    public float speed { get; private set; }
-    public string name { get; private set; }
+    public float time { get; private set; } = 0.0f;
+    public float target { get; private set; } = 5.0f;
+    public float speed { get; private set; } = 1.0f;
+    public string name { get; private set; } = "Timer";
 
-    public void SetTimer(float timeTarget, float timeSpeed = 1.0f)
+    public Timer(float timeTarget, float timeSpeed = 1.0f)
     {
         time = 0;
         speed = timeSpeed;
@@ -20,8 +20,8 @@ public class Timer
 
     public IEnumerator StartTimer()
     {
-        float timeLapse = 1.0f * speed;
         time = 0.0f;
+        float timeLapse = 1.0f * speed;
 
         while(time < target)
         {
