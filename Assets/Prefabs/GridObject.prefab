@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6395952202228537896}
   m_Layer: 6
   m_Name: GridObject
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,4 +125,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  isAvailable: 1
   margin: 0.05
