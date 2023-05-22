@@ -13,11 +13,14 @@ public class Timer
 
     public Timer(float timeTarget, float timeSpeed = 1.0f)
     {
-        time = 0;
         speed = timeSpeed;
         target = timeTarget;
     }
-
+    public void UpdateTimer(float timerTarget, float timeSpeed = 1.0f)
+    {
+        speed = timeSpeed;
+        target = timerTarget;
+    }
     public IEnumerator StartTimer()
     {
         time = 0.0f;
@@ -33,7 +36,6 @@ public class Timer
 
         TimerEndHandler();
     }
-
     private void TimerEndHandler()
     {
         TimerEnded?.Invoke();
