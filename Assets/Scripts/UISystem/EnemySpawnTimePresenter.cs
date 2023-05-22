@@ -23,7 +23,7 @@ public class EnemySpawnTimePresenter : MonoBehaviour
         timer.TimerEnded += OnCountDownEnded;
         timer.TimeChanged += OnTimeChanged;
 
-        countDownText.text = spawnTime.ToString();
+        countDownText.text = timer.target.ToString();
     }
 
     private void StartTimer()
@@ -47,6 +47,6 @@ public class EnemySpawnTimePresenter : MonoBehaviour
     
     private void OnTimeChanged()
     {
-        countDownText.text = (spawnTime - timer.time).ToString();
+        countDownText.text = (timer.target - timer.time).ToString();
     }
 }
