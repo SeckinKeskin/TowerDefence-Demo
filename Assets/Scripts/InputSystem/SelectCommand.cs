@@ -3,25 +3,29 @@ using UnityEngine;
 public class SelectCommand : ICommand
 {
     private GameObject selectedGameObject;
-    private GridCellBehaviour cellBehaviour;
-    private TowerFactory towerFactory;
-    
-    public SelectCommand(GameObject gameObject)
-    {
-        selectedGameObject = gameObject;
-        cellBehaviour = selectedGameObject.GetComponent<GridCellBehaviour>();
-    }
+    private ICommand buildCommand;
 
     public void Execute()
     {
-        towerFactory = GameObject.FindObjectOfType<TowerFactory>();
+        selectedGameObject = GetSelectedGameObject();
+        Debug.Log("Selected game object name is " + GetSelectedGameObjectName());
+    }
 
-        if(cellBehaviour.isAvailable)
-        {
-            GameManager.Instance.Generator(towerFactory, selectedGameObject.transform.position);
-            GameManager.Instance.SetTowerType();
-            
-            cellBehaviour.isAvailable = false;
-        }
+    private string GetSelectedGameObjectName()
+    {
+        return GetRaycastHitCollider()?.name;
+    }
+
+    private GameObject GetSelectedGameObject()
+    {
+        return GetRaycastHitCollider()?.gameObject;
+    }
+
+    private Collider2D GetRaycastHitCollider()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit2D raycastHit2D = Physics2D.GetRayIntersection(ray);
+
+        return raycastHit2D.collider;
     }
 }

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyFactory : MonoBehaviour, IFactory
 {
+    [SerializeField] private Transform generatePosition;
     [SerializeField] private EnemyType enemyType;
     private GameObject currentPrefab;
     private EnemyTypes currentType;
@@ -18,13 +19,16 @@ public class EnemyFactory : MonoBehaviour, IFactory
         return currentPrefab.GetComponent<IProducible>();
     }
 
-    public void Generate(Vector2 position)
+    public void Generate()
     {
-        GameObject newEnemy = Instantiate(currentPrefab, position, Quaternion.identity);
+        GameObject newEnemy = Instantiate(currentPrefab, generatePosition.position, Quaternion.identity);
     }
 
     public void SetCurrentEnemyPrefab()
     {
+        currentType = enemyType.nextType;
         currentPrefab = EnemyManager.Instance.GetPrefabByType(currentType);
+
+        enemyType.SetNextType();
     }
 }

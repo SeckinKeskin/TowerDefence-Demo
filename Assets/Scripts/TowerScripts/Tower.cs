@@ -15,8 +15,18 @@ public class Tower : MonoBehaviour, IProducible
         Debug.Log(transform.name);
     }
 
+    public void SetPosition()
+    {
+        
+    }
+
     public virtual void LevelUp()
     {
         level++;
+    }
+    
+    private void OnMouseDown()
+    {
+        Debug.Log("Tower Base Selected!");
     }
 }

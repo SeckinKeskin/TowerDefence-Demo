@@ -4,7 +4,7 @@ public class GridCellBehaviour : MonoBehaviour
 {
     public Cell cell;
     [HideInInspector]public Transform parent;
-    [SerializeField] public bool isAvailable = true;
+    [SerializeField] public bool isValid = true;
     [SerializeField] private float margin = 0.5f;
 
     public void Initialize()

@@ -17,12 +17,13 @@ public class GameManager : Singleton<GameManager>
         stateMachine.Initialize(new GameState());
     }
 
-    public void Generator(IFactory factory, Vector2 generatePosition)
+    public void Generator(IFactory factory)
     {
         product = factory.GetProduct();
         product.Initialize();
-        
-        factory.Generate(generatePosition);
+        product.SetPosition();
+
+        factory.Generate();
     }
 
     public void SetTowerType()

@@ -18,9 +18,9 @@ public class TowerFactory : MonoBehaviour, IFactory
         return currentTowerPrefab.GetComponent<IProducible>();
     }
 
-    public void Generate(Vector2 position)
+    public void Generate()
     {
-        GameObject newTower = Instantiate(currentTowerPrefab, position, Quaternion.identity);
+        GameObject newTower = Instantiate(currentTowerPrefab, Vector2.zero, Quaternion.identity);
     }
 
     private void SetCurrentTowerPrefab()
