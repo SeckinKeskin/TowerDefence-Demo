@@ -10,13 +10,8 @@ public class Timer
     public float target { get; private set; } = 5.0f;
     public float speed { get; private set; } = 1.0f;
     public string name { get; private set; } = "Timer";
-
-    public Timer(float timeTarget, float timeSpeed = 1.0f)
-    {
-        speed = timeSpeed;
-        target = timeTarget;
-    }
-    public void UpdateTimer(float timerTarget, float timeSpeed = 1.0f)
+    
+    public void SetTimer(float timerTarget, float timeSpeed = 1.0f)
     {
         speed = timeSpeed;
         target = timerTarget;

@@ -17,7 +17,8 @@ public class EnemySpawnTimePresenter : MonoBehaviour
 
     private void SetTimer()
     {
-        timer = new Timer(spawnTime);
+        timer = new Timer();
+        timer.SetTimer(spawnTime);
 
         timer.TimerEnded += OnCountDownEnded;
         timer.TimeChanged += OnTimeChanged;
@@ -35,7 +36,7 @@ public class EnemySpawnTimePresenter : MonoBehaviour
         timer.TimerEnded -= OnCountDownEnded;
         timer.TimeChanged -= OnTimeChanged;
 
-        GameManager.Instance.Generator(enemyFactory, enemySpawnPoint.position);
+        GameManager.Instance.Generator(enemyFactory);
         ResetTimer();
     }
 
