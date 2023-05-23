@@ -23,9 +23,4 @@ public class Tower : MonoBehaviour, IProducible
     {
         level++;
     }
-    
-    private void OnMouseDown()
-    {
-        Debug.Log("Tower Base Selected!");
-    }
 }
