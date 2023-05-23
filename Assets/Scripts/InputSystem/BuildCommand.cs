@@ -21,6 +21,7 @@ public class BuildCommand : ICommand
         
         if(isValid)
         {
+            towerFactory.SetSelectedCell(gridCellBehaviour);
             GameManager.Instance.Generator(towerFactory);
             GameManager.Instance.SetTowerType();
         }

@@ -20,6 +20,7 @@ public class GameManager : Singleton<GameManager>
     public void Generator(IFactory factory)
     {
         product = factory.GetProduct();
+
         product.Initialize();
         product.SetPosition();
 
