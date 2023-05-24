@@ -16,11 +16,17 @@ public class Tower : MonoBehaviour, IProducible
 
     public virtual void SetPosition()
     {
-        transform.position = cellBehaviour.transform.position;
+        transform.position = GetPosition();
     }
 
     public virtual void LevelUp()
     {
         level++;
+    }
+
+    private Vector3 GetPosition()
+    {
+        Vector3 cellPosition = cellBehaviour.transform.position;
+        return new Vector3(cellPosition.x, cellPosition.y, cellPosition.z - 0.5f);
     }
 }

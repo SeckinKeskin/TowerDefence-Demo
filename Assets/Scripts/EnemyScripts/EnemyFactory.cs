@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class EnemyFactory : MonoBehaviour, IFactory
 {
@@ -6,6 +7,8 @@ public class EnemyFactory : MonoBehaviour, IFactory
     [SerializeField] private EnemyType enemyType;
     private GameObject currentPrefab;
     private EnemyTypes currentType;
+    private Enemy currentEnemy;
+    private ObjectPool<IProducible> enemyPool = new ObjectPool<IProducible>();
 
     private void Start()
     {
@@ -22,6 +25,7 @@ public class EnemyFactory : MonoBehaviour, IFactory
     public void Generate()
     {
         GameObject newEnemy = Instantiate(currentPrefab, generatePosition.position, Quaternion.identity);
+        AddEnemyPool();
     }
 
     public void SetCurrentEnemyPrefab()
@@ -30,5 +34,13 @@ public class EnemyFactory : MonoBehaviour, IFactory
         currentPrefab = EnemyManager.Instance.GetPrefabByType(currentType);
 
         enemyType.SetNextType();
+    }
+
+    public void AddEnemyPool()
+    {
+        currentEnemy = currentPrefab.GetComponent<Enemy>();
+        enemyPool.AddObjectPool(currentEnemy);
+
+        Debug.Log("Enemy pool size is " + enemyPool.GetObjectPool().Count);
     }
 }

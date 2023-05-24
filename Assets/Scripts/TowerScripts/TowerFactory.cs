@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class TowerFactory : MonoBehaviour, IFactory
 {
@@ -7,6 +8,7 @@ public class TowerFactory : MonoBehaviour, IFactory
     private TowerTypes currentTowerType;
     private Tower currentTower;
     private GridCellBehaviour selectedCellBehaviour;
+    private ObjectPool<IProducible> towerPool = new ObjectPool<IProducible>();
 
     private void Start()
     {
@@ -25,6 +27,10 @@ public class TowerFactory : MonoBehaviour, IFactory
     public void Generate()
     {
         GameObject newTower = Instantiate(currentTowerPrefab, currentTowerPrefab.transform.position, Quaternion.identity);
+
+        towerPool.AddObjectPool(newTower.GetComponent<Tower>());
+
+        Debug.Log("Tower pool size is " + towerPool.GetObjectPool().Count);
     }
 
     public void SetSelectedCell(GridCellBehaviour cell)
