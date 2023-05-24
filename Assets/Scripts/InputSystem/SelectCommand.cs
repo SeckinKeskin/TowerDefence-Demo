@@ -2,21 +2,17 @@ using UnityEngine;
 
 public class SelectCommand : ICommand
 {
-    private GameObject selectedGameObject;
-    private ICommand buildCommand;
-
     public void Execute()
     {
-        selectedGameObject = GetSelectedGameObject();
         Debug.Log("Selected game object name is " + GetSelectedGameObjectName());
     }
 
-    private string GetSelectedGameObjectName()
+    public string GetSelectedGameObjectName()
     {
         return GetRaycastHitCollider()?.name;
     }
 
-    private GameObject GetSelectedGameObject()
+    public GameObject GetSelectedGameObject()
     {
         return GetRaycastHitCollider()?.gameObject;
     }

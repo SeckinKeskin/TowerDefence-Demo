@@ -21,7 +21,7 @@ public class BuildCommand : ICommand
         
         if(isValid)
         {
-            towerFactory.SetSelectedCell(gridCellBehaviour);
+            towerFactory?.SetSelectedCell(gridCellBehaviour);
             GameManager.Instance.Generator(towerFactory);
             GameManager.Instance.SetTowerType();
         }
@@ -29,14 +29,8 @@ public class BuildCommand : ICommand
 
     private GridCellBehaviour SetGridCellBehaviour()
     {
-        return GetRaycastHitCollider()?.GetComponent<GridCellBehaviour>();
-    }
+        SelectCommand selectCommand = new SelectCommand();
 
-    private Collider2D GetRaycastHitCollider()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit2D raycastHit2D = Physics2D.GetRayIntersection(ray);
-
-        return raycastHit2D.collider;
+        return selectCommand.GetSelectedGameObject()?.GetComponent<GridCellBehaviour>();
     }
 }
