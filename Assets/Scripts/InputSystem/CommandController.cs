@@ -12,6 +12,8 @@ public class CommandController
                 return new BuildCommand();
             case ControlTypes.Deselect:
                 return new DeselectCommand();
+            case ControlTypes.Destroy:
+                return new DestroyCommand();
             default:
                 return new SelectCommand();
         }
