@@ -1,8 +1,7 @@
 public enum ControlTypes
 {
     Default,
-    Select,
-    Deselect,
+    Info,
     Destroy,
     Build
 }

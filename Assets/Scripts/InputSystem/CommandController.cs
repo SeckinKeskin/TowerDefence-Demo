@@ -6,16 +6,12 @@ public class CommandController
     {
         switch(controlType)
         {
-            case ControlTypes.Select:
-                return new SelectCommand();
             case ControlTypes.Build:
                 return new BuildCommand();
-            case ControlTypes.Deselect:
-                return new DeselectCommand();
             case ControlTypes.Destroy:
                 return new DestroyCommand();
             default:
-                return new SelectCommand();
+                return new InfoCommand();
         }
     }
 

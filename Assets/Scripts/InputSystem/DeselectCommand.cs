@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DeselectCommand : ICommand
+public class InfoCommand : ICommand
 {
     public void Execute()
     {

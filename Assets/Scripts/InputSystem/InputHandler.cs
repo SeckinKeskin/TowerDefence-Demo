@@ -7,17 +7,13 @@ public class InputHandler : MonoBehaviour
 
     void Update()
     {   
-        if(Input.GetMouseButtonDown(0))
-        {
-            commandController.InputEvent(ControlTypes.Select);
-        }
-        else if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Return))
+        if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Return))
         {
             commandController.InputEvent(ControlTypes.Build);
         }
         else if (Input.GetMouseButtonUp(1))
         {
-            commandController.InputEvent(ControlTypes.Deselect);
+            commandController.InputEvent(ControlTypes.Info);
         }
         else if (Input.GetMouseButtonUp(2))
         {

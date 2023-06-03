@@ -2,26 +2,29 @@ using UnityEngine;
 
 public class DestroyCommand : ICommand
 {
-    private GameObject destroyObject;
     public void Execute()
     {
-        Debug.Log("Destroy Object");
+        Debug.Log("Destroy Object Execute");
 
-        destroyObject = GetSelectedTower();
-        DestroyObject();
+        Tower tower = GetTower();
+        TowerFactory factory = GetTowerFactory();
+
+        factory?.towerPool.Release(tower);
     }
 
     private GameObject GetSelectedTower()
     {
-        SelectCommand selectCommand = new SelectCommand();
-        return selectCommand.GetSelectedGameObject();
+        SelectController selection = new SelectController();
+        return selection.GetSelectedGameObject();
     }
 
-    private void DestroyObject()
+    private TowerFactory GetTowerFactory()
     {
-        if(!destroyObject) return;
+        return GameObject.FindObjectOfType<TowerFactory>();
+    }
 
-        if(destroyObject.tag == "Tower")
-            destroyObject.SetActive(false);
+    private Tower GetTower()
+    {
+        return GetSelectedTower()?.GetComponent<Tower>();
     }
 }
