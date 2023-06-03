@@ -1,13 +1,8 @@
 using UnityEngine;
 
-public class SelectCommand : ICommand
+public class SelectController
 {
-    public void Execute()
-    {
-        Debug.Log("Selected game object name is " + GetSelectedGameObjectName());
-    }
-
-    public string GetSelectedGameObjectName()
+    public string GetSelectedObjectName()
     {
         return GetRaycastHitCollider()?.name;
     }
@@ -17,7 +12,7 @@ public class SelectCommand : ICommand
         return GetRaycastHitCollider()?.gameObject;
     }
 
-    private Collider2D GetRaycastHitCollider()
+    public Collider2D GetRaycastHitCollider()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D raycastHit2D = Physics2D.GetRayIntersection(ray);
