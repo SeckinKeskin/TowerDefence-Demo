@@ -6,20 +6,27 @@ public class BuildCommand : ICommand
 
     public void Execute()
     {
-        if(!gridCellBehaviour) return;
+        if(!GetGridCellBehaviour()) return;
         
         TowerFactory towerFactory = GetTowerFactory();
+        gridCellBehaviour = GetGridCellBehaviour();
         bool isValid = gridCellBehaviour.isValid;
 
         if(isValid)
         {
             towerFactory?.SetSelectedCell(gridCellBehaviour);
-            towerFactory?.towerPool.Get();
+            towerFactory?.Generate();
         }
     }
 
     private TowerFactory GetTowerFactory()
     {
         return GameObject.FindObjectOfType<TowerFactory>();
+    }
+
+    private GridCellBehaviour GetGridCellBehaviour()
+    {
+        SelectController selection = new SelectController();
+        return selection.GetSelectedGameObject().GetComponent<GridCellBehaviour>();
     }
 }
