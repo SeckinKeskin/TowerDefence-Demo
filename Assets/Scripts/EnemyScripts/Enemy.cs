@@ -1,7 +1,9 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour, IProducible
-{   
+{
+    public EnemyTypes type = EnemyTypes.Default;
     public void Initialize()
     {
         Transform destPoint = GameObject.Find("EnemyDestination-Point").transform;
@@ -11,11 +13,6 @@ public class Enemy : MonoBehaviour, IProducible
     public void SetPosition()
     {
 
-    }
-    
-    private void OnMouseDown()
-    {
-        Debug.Log("Enemy Base Selected!");
     }
 }
 

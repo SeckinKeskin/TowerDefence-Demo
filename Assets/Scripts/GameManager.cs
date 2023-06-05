@@ -8,6 +8,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private EnemySpawnTimePresenter enemySpawnTimePresenter;
     private IProducible product;
     private StateMachine stateMachine = new StateMachine();
+    
     void Start()
     {
         SetTowerType();

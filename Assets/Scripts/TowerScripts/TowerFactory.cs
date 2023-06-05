@@ -4,49 +4,78 @@ using System.Collections.Generic;
 public class TowerFactory : MonoBehaviour, IFactory
 {
     [SerializeField] private TowerType towerType;
-    private GameObject currentTowerPrefab;
-    private TowerTypes currentTowerType;
-    private Tower currentTower;
-    private GridCellBehaviour selectedCellBehaviour;
-    private ObjectPool<IProducible> towerPool = new ObjectPool<IProducible>();
-
-    private void Start()
-    {
-        SetCurrentTowerPrefab();
-        SetCurrentTowerCell();
-    }
+    private List<Tower> DestroyedTowerList = new List<Tower>();
 
     public IProducible GetProduct()
     {
-        SetCurrentTowerPrefab();
-        SetCurrentTowerCell();
-
-        return currentTowerPrefab.GetComponent<IProducible>();
+        return GetCurrentTower().GetComponent<IProducible>();
     }
 
     public void Generate()
     {
-        GameObject newTower = Instantiate(currentTowerPrefab, currentTowerPrefab.transform.position, Quaternion.identity);
+        Tower tower = GetCurrentTower();
 
-        towerPool.AddObjectPool(newTower.GetComponent<Tower>());
+        if(!HasDestroyedTowerList(tower))
+        {
+            Instantiate(tower.gameObject, tower.transform.position, Quaternion.identity);
+        }
+        else
+        {
+            RebuildTower(tower);
+        }
+    }
 
-        Debug.Log("Tower pool size is " + towerPool.GetObjectPool().Count);
+    private Tower GetCurrentTower()
+    {
+        TowerTypes currentTowerType = towerType.currentType;
+        Tower tower = TowerManager.Instance.GetPrefabByType(currentTowerType).GetComponent<Tower>();
+
+        return (!HasDestroyedTowerList(tower)) ? tower : GetTowerFromDestroyListByType();
     }
 
     public void SetSelectedCell(GridCellBehaviour cell)
     {
-        selectedCellBehaviour = cell;
+        GetCurrentTower().cellBehaviour = cell;
     }
 
-    private void SetCurrentTowerPrefab()
+    private void RebuildTower(Tower tower)
     {
-        currentTowerType = towerType.currentType;
-        currentTowerPrefab = TowerManager.Instance.GetPrefabByType(currentTowerType);
+        DestroyedTowerList.Remove(tower);
+        tower.cellBehaviour.isValid = false;
+        tower.gameObject.SetActive(true);
     }
 
-    private void SetCurrentTowerCell()
+    public void DestroyTower(Tower tower)
     {
-        currentTower = currentTowerPrefab.GetComponent<Tower>();
-        currentTower.cellBehaviour = selectedCellBehaviour;
+        tower.gameObject.SetActive(false);
+        tower.cellBehaviour.isValid = true;
+        DestroyedTowerList.Add(tower);
+    }
+
+    private bool HasDestroyedTowerList(Tower tower)
+    {
+        if(DestroyedTowerList.Count == 0) return false;
+
+        foreach (Tower t in DestroyedTowerList)
+        {
+            if(t.type == tower.type) return true;
+        }
+
+        return false;
+    }
+
+    private Tower GetTowerFromDestroyListByType()
+    {
+        TowerTypes type = towerType.currentType;
+
+        foreach (Tower tower in DestroyedTowerList)
+        {
+            if (tower.type == type)
+            {
+                return tower;
+            }
+        }
+
+        return null;        //Error handler needed
     }
 }

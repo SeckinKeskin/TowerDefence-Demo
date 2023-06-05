@@ -7,11 +7,13 @@ public class Tower : MonoBehaviour, IProducible
     protected GameObject prefab;
     protected int cost;
     protected int level = 0;
+    public TowerTypes type = TowerTypes.Default;
     public GridCellBehaviour cellBehaviour;
 
     public virtual void Initialize()
     {
-        transform.name = "Tower";
+        transform.name = type + " Tower";
+        cellBehaviour.isValid = false;
     }
 
     public virtual void SetPosition()

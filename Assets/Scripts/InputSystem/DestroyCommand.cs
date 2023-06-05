@@ -9,7 +9,7 @@ public class DestroyCommand : ICommand
         Tower tower = GetTower();
         TowerFactory factory = GetTowerFactory();
 
-        factory?.towerPool.Release(tower);
+        factory.DestroyTower(tower);
     }
 
     private GameObject GetSelectedTower()

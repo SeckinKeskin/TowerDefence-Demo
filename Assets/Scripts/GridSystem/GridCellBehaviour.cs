@@ -21,12 +21,17 @@ public class GridCellBehaviour : MonoBehaviour
 
     private void SetName()
     {
-        transform.name = GridCellName();
+        transform.name = GetName();
     }
 
     private void SetParent()
     {
         transform.parent = parent;
+    }
+
+    private string GetName()
+    {
+        return "Cell_" + cell.column + "x" + cell.row;
     }
 
     private Vector2 Position()
@@ -35,11 +40,6 @@ public class GridCellBehaviour : MonoBehaviour
         float positionY = transform.position.y + PositionY();
 
         return new Vector2(positionX, positionY);
-    }
-
-    private string GridCellName()
-    {
-        return "Cell_" + cell.column + "x" + cell.row;
     }
 
     private float PositionX()
