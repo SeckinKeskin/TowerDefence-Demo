@@ -30,7 +30,7 @@ public class TowerFactory : MonoBehaviour, IFactory
         TowerTypes currentTowerType = towerType.currentType;
         Tower tower = TowerManager.Instance.GetPrefabByType(currentTowerType).GetComponent<Tower>();
 
-        return (!HasDestroyedTowerList(tower)) ? tower : GetTowerFromDestroyListByType();
+        return (HasDestroyedTowerList(tower)) ? GetTowerFromDestroyListByType() : tower;
     }
 
     public void SetSelectedCell(GridCellBehaviour cell)
