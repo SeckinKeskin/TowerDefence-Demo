@@ -8,9 +8,9 @@ public class BuildCommand : ICommand
     {
         if(!GetGridCellBehaviour()) return;
         
-        TowerFactory towerFactory = GetTowerFactory();
         gridCellBehaviour = GetGridCellBehaviour();
         bool isValid = gridCellBehaviour.isValid;
+        TowerFactory towerFactory = GetTowerFactory();
 
         if(isValid)
         {
@@ -28,6 +28,6 @@ public class BuildCommand : ICommand
     private GridCellBehaviour GetGridCellBehaviour()
     {
         SelectController selection = new SelectController();
-        return selection.GetSelectedGameObject().GetComponent<GridCellBehaviour>();
+        return selection.GetSelectedGameObject()?.GetComponent<GridCellBehaviour>();
     }
 }
